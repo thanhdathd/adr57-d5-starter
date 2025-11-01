@@ -37,10 +37,10 @@ public class RcvAdapter extends RecyclerView.Adapter<RcvAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // get view using layout inflater
-//        View view = LayoutInflater.from( ....);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_rcv, parent, false);
 
         // create view Holder and return
-//        return new MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class RcvAdapter extends RecyclerView.Adapter<RcvAdapter.MyViewHolder> {
     @Override
     public int getItemCount() {
         // total item count
-        // return ....
+         return items.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -83,11 +83,10 @@ public class RcvAdapter extends RecyclerView.Adapter<RcvAdapter.MyViewHolder> {
                     .into(imageView);
 
             // set title and description
-            //titleTextView....
-            //descriptionTextView....
-
+            titleTextView.setText(item.getTitle());
+            descriptionTextView.setText(item.getDescription());
             // set number of likes
-            //likesTextView....
+            likesTextView.setText(String.valueOf(item.getLikes()));
 
             // Set like button state
             int likeIcon = item.isLiked() ? R.drawable.ic_heart_filled : R.drawable.ic_heart_outline;

@@ -1,5 +1,6 @@
 package com.adr57.d5_starter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -51,13 +52,14 @@ public class MainActivity extends AppCompatActivity implements RcvAdapter.OnItem
         recyclerView = findViewById(R.id.recyclerView);
 
         // Create StaggeredGridLayoutManager with 2 columns
-//        StaggeredGridLayoutManager layoutManager = ....
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+
 
         // Set gap strategy for better performance
-//        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
 
 //        set layout manager for recycler view
-//        code here
+        recyclerView.setLayoutManager(layoutManager);
 
 
         // Add item decoration for spacing
@@ -67,10 +69,10 @@ public class MainActivity extends AppCompatActivity implements RcvAdapter.OnItem
         cardItems = new ArrayList<>();
 
         // create adapter with data list
-//        adapter = .....
+        adapter = new RcvAdapter(cardItems, this, this);
 
         // set adapter for recycler view
-//        code here
+        recyclerView.setAdapter(adapter);
     }
 
     private void generateSampleData() {
@@ -156,6 +158,11 @@ public class MainActivity extends AppCompatActivity implements RcvAdapter.OnItem
 
     private void showItemDetails(CardItem item) {
         Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("ITEM_LINK", item.getImageUrl());
+        intent.putExtra("ITEM_TITLE", item.getTitle());
+        intent.putExtra("ITEM_DES", item.getDescription());
+        startActivity(intent);
     }
 
     private void toggleLike(CardItem item) {

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".DetailActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        app:layout_constraintTop_toTopOf="@id/main"
+        app:layout_constraintStart_toStartOf="@id/main"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIconTint="@color/white"
+        android:elevation="4dp"
+        app:titleTextColor="@android:color/white" />
+
+    <ImageView
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:src="@drawable/placeholder_image"
+        android:id="@+id/mainPhoto"
+        android:maxHeight="600dp"
+        android:minHeight="200dp"
+        android:background="@color/black"
+        android:scaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/mainPhoto"
+        android:layout_marginTop="-180dp"
+        android:background="@color/black"
+        android:alpha="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="Title of the Image"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:id="@+id/tvDescription"
+            android:textSize="12sp"
+            android:text="description of the image"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
