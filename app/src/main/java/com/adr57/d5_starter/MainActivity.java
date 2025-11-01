@@ -52,13 +52,14 @@ public class MainActivity extends AppCompatActivity implements RcvAdapter.OnItem
 
         // Create StaggeredGridLayoutManager with 2 columns
 //        StaggeredGridLayoutManager layoutManager = ....
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         // Set gap strategy for better performance
-//        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
 
 //        set layout manager for recycler view
+        recyclerView.setLayoutManager(layoutManager);
 //        code here
-
 
         // Add item decoration for spacing
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, 1, 10, true));
@@ -67,10 +68,10 @@ public class MainActivity extends AppCompatActivity implements RcvAdapter.OnItem
         cardItems = new ArrayList<>();
 
         // create adapter with data list
-//        adapter = .....
+        adapter = new RcvAdapter(cardItems, this, this);
 
         // set adapter for recycler view
-//        code here
+        recyclerView.setAdapter(adapter);
     }
 
     private void generateSampleData() {
